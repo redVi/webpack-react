@@ -1,0 +1,6 @@
+.home {
+  padding: 10px 50px;
+  display: grid;
+  gap: 10px;
+  background-color: whitesmoke;
+}

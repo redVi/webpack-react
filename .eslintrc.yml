@@ -1,0 +1,29 @@
+env:
+  es6: true
+  browser: true
+  commonjs: true
+  jest: true
+  node: true
+
+parser: "@babel/eslint-parser"
+extends: ["plugin:react/recommended"]
+
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 6
+  sourceType: module
+
+plugins: ["react"]
+
+settings:
+  react:
+    version: "17"
+
+rules:
+  quotes: ["error", "single"]
+  object-curly-spacing: ["error", "always"]
+  react/jsx-uses-react: "off"
+  react/react-in-jsx-scope: "off"
+  space-before-function-paren: ["error", "always"]
+  semi: [2, "always"]
