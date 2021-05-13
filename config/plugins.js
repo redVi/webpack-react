@@ -4,7 +4,7 @@ const InterpolateHtmlPlugin = require('./utils/InterpolateHtmlPlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const devMode = require('./constants').devMode;
+const isDev = require('./constants').isDev;
 const env = require('./constants').env;
 
 const plugins = [
@@ -25,7 +25,7 @@ const plugins = [
   new HtmlWebpackPlugin({
     inject: true,
     template: path.resolve(__dirname, '../public/index.html'),
-    minify: devMode ? {} : {
+    minify: isDev ? {} : {
       removeComments: true,
       collapseWhitespace: true,
       removeRedundantAttributes: true,
@@ -38,16 +38,13 @@ const plugins = [
       minifyURLs: true
     }
   }),
-  new InterpolateHtmlPlugin(HtmlWebpackPlugin, env)
-];
-
-if (!devMode) {
-  plugins.push(
+  new InterpolateHtmlPlugin(HtmlWebpackPlugin, env),
+  ...(isDev ? [] : [
     new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-      chunkFilename: 'css/[id].css'
-    })
-  );
-}
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[name].[contenthash].css',
+    }),
+  ]),
+];
 
 module.exports = plugins;

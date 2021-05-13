@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const devMode = require('./constants').devMode;
+const isDev = require('./constants').isDev;
 
-const cssRules = devMode ? 'style-loader' : { loader: MiniCssExtractPlugin.loader };
+const cssRules = isDev ? 'style-loader' : { loader: MiniCssExtractPlugin.loader };
 const postcssLoader = {
   loader: 'postcss-loader',
   options: {
@@ -35,8 +35,10 @@ module.exports = [
       cssRules,
       {
         loader: 'css-loader', options: {
-          modules: true,
-          importLoaders: 1
+          modules: {
+            localIdentName: isDev ? '[path]__[name]__[local]' : '[name]__[hash:base64:5]',
+          },
+          importLoaders: 1,
         }
       },
       postcssLoader,

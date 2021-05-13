@@ -1,7 +1,7 @@
 const path = require('path');
 const rules = require('./rules');
 const plugins = require('./plugins');
-const devMode = require('./constants').devMode;
+const isDev = require('./constants').isDev;
 
 const config = {
   target: 'web',
@@ -22,12 +22,12 @@ const config = {
   plugins,
   devServer: {
     historyApiFallback: true,
-    hot: devMode,
+    hot: isDev,
     port: 8080,
   },
 };
 
-if (devMode) {
+if (isDev) {
   config.devtool = 'source-map';
 }
 
