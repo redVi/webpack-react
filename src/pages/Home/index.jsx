@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import styles from './home.module.css';
 import car from 'assets/images/car.jpg';
-const Title = lazy(() => import('components/Title'));
+const Title = lazy(() => import(/* webpackChunkName: 'TitleComponent' */ 'components/Title'));
 
 export default function HomePage () {
   return (

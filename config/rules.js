@@ -38,7 +38,6 @@ module.exports = [
           modules: {
             localIdentName: isDev ? '[path]__[name]__[local]' : '[name]__[hash:base64:5]',
           },
-          importLoaders: 1,
         }
       },
       postcssLoader,
