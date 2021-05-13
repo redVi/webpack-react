@@ -1,11 +1,15 @@
+import { lazy, Suspense } from 'react';
 import styles from './home.module.css';
 import car from 'assets/images/car.jpg';
+const Title = lazy(() => import('components/Title'));
 
 export default function HomePage () {
   return (
-    <div className={styles.home}>
-      <h1>Hello</h1>
-      <img src={car} alt="Car" />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className={styles.home}>
+        <Title />
+        <img src={car} alt="Car" />
+      </div>
+    </Suspense>
   );
 }
