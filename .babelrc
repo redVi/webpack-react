@@ -16,6 +16,12 @@
         "corejs": false,
         "regenerator": true
       }
+    ],
+    [
+      "@babel/plugin-proposal-pipeline-operator",
+      {
+        "proposal": "minimal"
+      }
     ]
   ]
 }
