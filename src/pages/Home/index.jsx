@@ -8,8 +8,8 @@ export default function HomePage () {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className={styles.home}>
-        <Title />
-        <h2>{'yello' |> capitalize}</h2>
+        <Title title='Hello' />
+        <h2>{'react' |> capitalize}</h2>
         <img src={car} alt="Car" />
       </div>
     </Suspense>
